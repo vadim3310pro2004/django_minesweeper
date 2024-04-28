@@ -1,0 +1,90 @@
+html[data-theme="dark"] {
+    --body-bg: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+    html[data-theme="auto"] {
+        --body-bg: #333;
+    }
+}
+
+#header {
+    border-radius: 20px;
+    margin: 10px;
+    padding: 15px 40px;
+    box-shadow: 0 0 10px var(--secondary);
+}   
+
+#site-name a:link, #site-name a:visited{
+    color: white;
+    font-weight: bolder;
+}
+
+.module table caption {
+    border-radius: 10px;
+    padding: 8px 13px;
+    margin: 5px;
+}
+
+#content-related {
+    box-shadow: 0 0 10px var(--darkened-bg);
+    border-radius: 20px;
+}
+
+#content-related .module h2 {
+    border-bottom: 2px solid var(--accent);
+}
+
+#header #user-tools a, #logout-form button {
+    padding: 3px 10px;
+    border-radius: 8px;
+    font-weight: 700;
+    border: 0;
+}
+
+#content-main tbody a {
+    background-color: var(--secondary);
+    padding: 3px 10px;
+    border-radius: 6px;
+    background-position: 5px;
+    padding-left: 20px;
+    color: white;
+}
+
+#content-main tbody th a {
+    padding: 3px 10px;
+}
+
+nav .breadcrumbs {
+    margin: 10px;
+    border-radius: 10px;
+}
+
+#user-tools strong, #user-tools {
+    color: white;
+    font-weight: bolder;
+}
+
+.login #container {
+    border-radius: 20px;
+}
+
+.login .theme-toggle {
+    transform: translateX(35px) translateY(2px);
+}
+
+.login input:not([type='submit']) {
+    border: 2px solid var(--secondary);
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+}
+
+tr:nth-child(even) {
+    background-color: #00000000;
+}
+
+th {
+    translate: 0 3px;
+}

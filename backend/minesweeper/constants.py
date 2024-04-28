@@ -1,0 +1,6 @@
+
+
+PLAYER_CACHE = {
+    'NAME_SPACE': 'MINESWEEPER_PLAYER_CACHE',
+    'TIME': 900,
+}
