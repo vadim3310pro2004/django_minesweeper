@@ -6,6 +6,5 @@ class CashedPlayer(BaseCache):
     """
     Cache for minesweeper_player
     """
-
     cache_alias = PLAYER_CACHE["NAME_SPACE"]
     cache_time = PLAYER_CACHE["TIME"]

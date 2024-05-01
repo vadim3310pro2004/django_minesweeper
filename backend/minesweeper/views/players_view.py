@@ -1,4 +1,6 @@
 from django.http import Http404
+from django.db import models
+
 from rest_framework.viewsets import GenericViewSet
 from rest_framework import mixins
 from rest_framework.request import Request
@@ -20,15 +22,15 @@ class PlayersView(
     GenericViewSet,
 ):
     """
-    * get, put, patch
-    * On update increment total_games of Player and
+    * list, retrive, update, partial update
+    * On update and partial update change Player stats
     """
-    queryset = Player.objects.all().filter(user__is_active=True)
+    queryset = Player.objects.all().filter(user__is_active=True).select_related("user")
     serializer_class = PlayersSerializer
     permission_classes = IsOwnerOrReadOnly,
     filterset_class = PlayersFilter
 
-    def list(self, request: Request, *args, **kwargs):
+    def list(self, request: Request, *args, **kwargs) -> Response:
         queryset = self.filter_queryset(self.get_queryset())
         page = self.paginate_queryset(queryset)
         if page is not None:
@@ -44,7 +46,7 @@ class PlayersView(
 
         return Response(cached_data)
 
-    def get_object(self, *args, **kwargs):
+    def get_object(self, *args, **kwargs) -> models.Model:
         """
         * Using User id in URL (not Player id)
         * Caching
@@ -68,7 +70,7 @@ class PlayersView(
             raise Http404()
 
         instanse = CashedPlayer.get(
-            pk, 
+            id=pk, 
             queryset=queryset, 
             filter=filter_kwargs
         )
@@ -76,7 +78,7 @@ class PlayersView(
         self.check_object_permissions(self.request, instanse)
         return instanse
 
-    def get_me(self):
+    def get_me(self) -> models.Model:
         return CashedPlayer.get(
             self.request.user.id,
             self.get_queryset()
@@ -90,7 +92,6 @@ class PlayersView(
         url_path="me",
     )
     def me(self, request, *args, **kwargs):
-
         self.get_object = self.get_me
 
         match request.method:

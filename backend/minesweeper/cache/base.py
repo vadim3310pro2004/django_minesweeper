@@ -4,7 +4,6 @@ from django.shortcuts import get_object_or_404
 from django.db.models import Model, QuerySet 
 
 
-
 class BaseCache:
     cache_alias: str
     cache_time: int
@@ -32,6 +31,7 @@ class BaseCache:
         filter: dict = {},
     ) -> Model:
         cache_name = cls.cache_alias + str(id)
+
         if instance := cache.get(cache_name):
             return instance
 
@@ -39,7 +39,7 @@ class BaseCache:
         cache.set(cache_name, instance, cls.cache_time)
 
         return instance
-
+    
     @classmethod
     def invalidate(cls, id: int) -> None:
         cache_name = cls.cache_alias + str(id)
