@@ -16,7 +16,7 @@ Server layer for minesweeper game application
 
 1. define in your evieron
     + SECRET_KEY
-    + FRONTEND_ORIGIN
+    + FRONTEND_ORIGINS
     + DEBUG
     + EMAIL_HOST
     + EMAIL_HOST_USER
@@ -32,6 +32,7 @@ Server layer for minesweeper game application
     + GOOGLE_OAUTH2_CLIENT_ID
     + ACCESS_TOKEN_LIFE_MINUTES
     + REFRESH_TOKEN_LIFE_DEYS
+    + ALLOWED_HOSTS
 
 ## To run
 

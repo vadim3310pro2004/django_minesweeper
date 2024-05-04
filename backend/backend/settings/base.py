@@ -199,6 +199,13 @@ SIMPLE_JWT = {
     "ROTATE_REFRESH_TOKENS": True,
     "UPDATE_LAST_LOGIN": True,
     "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
+    "ACCESS_TOKEN_LIFETIME": timedelta(
+        minutes=float(os.environ.get("ACCESS_TOKEN_LIFE_MINUTES"))
+    ),
+    "REFRESH_TOKEN_LIFETIME": timedelta(
+        days=float(os.environ.get("REFRESH_TOKEN_LIFE_DEYS"))
+    ),
+    "AUTH_COOKIE_HTTP_ONLY": True,
 }
 
 
