@@ -4,7 +4,7 @@ from rest_framework import serializers
 
 from accounts.services import (
     get_user_from_oauth, 
-    verify_google_jwt
+    verify_google_access_token
 )
 from accounts.models import User
 
@@ -33,7 +33,7 @@ class GoogleAuthSerializer(TokenObtainSerializer):
         )
 
     def validate(self, attrs: Dict[str, Any]) -> Dict[str, str]:
-        user_data = verify_google_jwt(
+        user_data = verify_google_access_token(
             attrs.get("token")
         )
 

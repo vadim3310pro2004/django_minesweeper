@@ -23,6 +23,9 @@ class GoogleAuthData(TypedDict):
 
 
 def verify_google_jwt(token: str) -> GoogleAuthData:
+    """
+    This functions verifies google credentials
+    """
     try:
         return id_token.verify_oauth2_token(
             token, 
