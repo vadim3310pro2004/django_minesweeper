@@ -205,7 +205,6 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(
         days=float(os.environ.get("REFRESH_TOKEN_LIFE_DEYS"))
     ),
-    "AUTH_COOKIE_HTTP_ONLY": True,
 }
 
 
