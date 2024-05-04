@@ -27,7 +27,6 @@ class PlayersSerializer(serializers.ModelSerializer):
             instance.id, 
             self.context.get("request").data.get("time")
         )
-
         return instance
 
     def save(self, *args, **kwargs):
